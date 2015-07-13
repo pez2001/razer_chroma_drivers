@@ -180,7 +180,6 @@ void draw_ring(struct razer_keys *keys,struct razer_pos *pos,struct razer_rgb *c
 
 double deg2rad(double degree);
 double rad2deg(double rad);
-double pos_angle_radians(struct razer_pos *src,struct razer_pos *dst);
 
 
 //void capture_keys(struct razer_keys *keys,SDL_Renderer *renderer,SDL_Window *window,SDL_Texture *tex);

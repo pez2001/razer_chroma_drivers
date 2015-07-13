@@ -1376,16 +1376,6 @@ double rad2deg(double rad)
 }
 
 
-double pos_angle_radians(struct razer_pos *src,struct razer_pos *dst)
-{
-	double x,y;
-	x=(double)src->x - (double)dst->x;
-	y=(double)src->y - (double)dst->y;
-	double angle = atan2(x,y);
-	return(angle);
-}
-
-
 void razer_set_input_handler(struct razer_chroma *chroma,razer_input_handler handler)
 {
 	chroma->input_handler = handler;
@@ -1485,7 +1475,6 @@ void razer_update(struct razer_chroma *chroma)
 							//printf("ev_code:%d\n",event->code);
 							razer_copy_pos(&chroma->key_pos,&chroma->last_key_pos);
 							convert_keycode_to_pos(event->code,&chroma->key_pos);							
-							//double pangle=pos_angle_radians(&old,&pos);
 							chroma->keys->heatmap[chroma->key_pos.y][chroma->key_pos.x]+=1;
 						}
 					}
