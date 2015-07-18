@@ -42,7 +42,7 @@ install: all
 	@echo "====================================================="
 	cp init.d/razer_bcd /etc/init.d
 	chown root:root /etc/init.d/razer_bcd
-	cp init.d/activate_driver /usr/sbin/razer_blackwidow_chroma_activate_driver.sh
+	cp init.d/activate_driver.sh /usr/sbin/razer_blackwidow_chroma_activate_driver.sh
 	chown root:root /usr/sbin/razer_blackwidow_chroma_activate_driver.sh
 	ln -fs ../init.d/razer_bcd /etc/rc2.d/S24razer_bcd
 	ln -fs ../init.d/razer_bcd /etc/rc3.d/S24razer_bcd
