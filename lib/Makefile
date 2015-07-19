@@ -33,11 +33,11 @@ razer_chroma_static_debug: $(RAZER_CHROMA_DEBUG_OBJ)
 	$(AR) -rs librazer_chroma.da $(RAZER_CHROMA_DEBUG_OBJ)
 
 razer_chroma_shared: $(RAZER_CHROMA_OBJ)
-	$(CC) $(LDFLAGS) -rdynamic -nostdlib -DCREATELIB -shared $(RAZER_CHROMA_OBJ) -o librazer_chroma.so
+	$(CC) -rdynamic -nostdlib -DCREATELIB -shared $(RAZER_CHROMA_OBJ) -o librazer_chroma.so $(LDFLAGS)
 	@strip librazer_chroma.so
 
 razer_chroma_shared_debug: $(RAZER_CHROMA_DEBUG_OBJ)
-	$(CC) $(LDFLAGS) -rdynamic -nostdlib -DCREATELIB -shared $(RAZER_CHROMA_DEBUG_OBJ) -o librazer_chroma_debug.so
+	$(CC) -rdynamic -nostdlib -DCREATELIB -shared $(RAZER_CHROMA_DEBUG_OBJ) -o librazer_chroma_debug.so $(LDFLAGS)
 
 %.o: %.c 
 	$(CC) $(CFLAGS) -c -o $@ $<

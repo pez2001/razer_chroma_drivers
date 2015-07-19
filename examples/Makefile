@@ -14,15 +14,15 @@ all: examples_debug examples
 examples_debug: 
 	@echo "::\033[32m COMPILING examples [DEBUG]\033[0m"
 	@echo "=============================="
-	$(CC) example1.c $(DEBUG_CFLAGS) $(LIBS) ../lib/librazer_chroma.da -o example1_debug $<
-	$(CC) input_example.c $(DEBUG_CFLAGS) $(LIBS) ../lib/librazer_chroma.da -o input_example_debug $<
+	$(CC) example1.c $(DEBUG_CFLAGS) ../lib/librazer_chroma.da -o example1_debug $< $(LIBS)
+	$(CC) input_example.c $(DEBUG_CFLAGS) ../lib/librazer_chroma.da -o input_example_debug $< $(LIBS)
 
 examples: 
 	@echo "::\033[32m COMPILING examples\033[0m"
 	@echo "======================"
-	$(CC) example1.c $(CFLAGS) $(LIBS) ../lib/librazer_chroma.a -o example1 $<
+	$(CC) example1.c $(CFLAGS) ../lib/librazer_chroma.a -o example1 $< $(LIBS)
 	@strip example1
-	$(CC) input_example.c $(CFLAGS) $(LIBS) ../lib/librazer_chroma.a -o input_example $<
+	$(CC) input_example.c $(CFLAGS) ../lib/librazer_chroma.a -o input_example $< $(LIBS)
 	@strip input_example
 
 clean: 
