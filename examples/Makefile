@@ -10,7 +10,7 @@ LDFLAGS= $(LIBS)
 DEBUG_LDFLAGS = $(LIBS)
 CC=gcc
 
-all: examples_debug examples snake
+all: examples_debug examples snake dynamic input_map
 
 
 snake: 
@@ -35,6 +35,11 @@ examples:
 	@strip input_example
 	$(CC) dota_keys.c $(CFLAGS) ../lib/librazer_chroma.a $(LIBS) -o dota_keys
 	@strip dota_keys
+
+input_map:
+	$(CC) input_map.c $(CFLAGS) ../lib/librazer_chroma.a $(LIBS) -o input_map
+	@strip input_map
+	
 dynamic:
 	@echo "::\033[32m COMPILING dynamic\033[0m"
 	@echo "======================"

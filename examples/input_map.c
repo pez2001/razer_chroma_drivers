@@ -1,4 +1,4 @@
-#include "input_example.h"
+#include "input_map.h"
 
 #define keys_max 10
 int keys_history_index = 0;
@@ -20,17 +20,20 @@ void effect(struct razer_chroma *chroma)
 	int x,y;
 	struct razer_rgb col;
 	struct razer_pos pos;
-	col.r = 255;
-	col.g = 0;
+	col.r = 0;
+	col.g = 255;
 	col.b = 0;
 	while(running)
 	{
 		for(x=0;x<22;x++)
 			for(y=0;y<6;y++)
 			{
-				r = (cos((count+((rnd%4)*90)+y)*s)+sin(count+x)*s)*255;
-				g = (cos((count+((rnd2%4)*90)+y)*s)+sin(count+x)*s)*255;
-				b = (cos((count+((rnd3%4)*90)+y)*s)+sin(count+x)*s)*255;
+				// r = (cos((count+((rnd%4)*90)+y)*s)+sin(count+x)*s)*255;
+				// g = (cos((count+((rnd2%4)*90)+y)*s)+sin(count+x)*s)*255;
+					 r = 0;
+				   g = 0;
+					 b = 0;
+				// b = (cos((count+((rnd3%4)*90)+y)*s)+sin(count+x)*s)*255;
 				chroma->keys->rows[y].column[x].r = (unsigned char)r;
 				chroma->keys->rows[y].column[x].g = (unsigned char)g;
 				chroma->keys->rows[y].column[x].b = (unsigned char)b;
@@ -40,7 +43,8 @@ void effect(struct razer_chroma *chroma)
 		for(int i=0;i<keys_max;i++)
 			if(keys_history[i]!=-1)
 			{
-				razer_convert_keycode_to_pos(keys_history[i],&pos);							
+				razer_convert_keycode_to_pos(keys_history[i],&pos);
+							
 				razer_set_key_pos(chroma->keys,&pos,&col);
 			}
 		razer_update_keys(chroma,chroma->keys);
@@ -53,7 +57,7 @@ void effect(struct razer_chroma *chroma)
 			rnd3 = random();
 		}
 		razer_update(chroma);
-		razer_frame_limiter(chroma,13);
+		razer_frame_limiter(chroma,6);
 	}
 }
 
@@ -70,14 +74,18 @@ void stop(int sig)
 	running = 0;
 }
 
-int input_handler(struct razer_chroma *chroma, struct razer_chroma_event *event)
+int input_handler(struct razer_chroma *chroma, int keycode,int pressed)
 {
+  struct razer_pos pos;
+
 	#ifdef USE_DEBUGGING
 		printf("input_handler called\n");
 	#endif
-	if(event->type != RAZER_CHROMA_EVENT_TYPE_KEYBOARD || !event->sub_type)
+	if(!pressed)
 		return(1);
-	keys_history[keys_history_index++] = (long)event->value;
+	keys_history[keys_history_index++] = keycode;
+  razer_convert_keycode_to_pos(keycode, &pos);
+	printf("Keycode %d, X: %d, Y: %d\n", keycode, pos.x, pos.y);
 	if(keys_history_index==keys_max)
 		keys_history_index = 0;
 	return(1);
