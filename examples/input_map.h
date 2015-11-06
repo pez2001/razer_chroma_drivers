@@ -10,3 +10,4 @@
 #include <signal.h>
 
 #include "../lib/razer_chroma.h"
+#endif
