@@ -176,6 +176,7 @@ ubuntu_15_04_install ubuntu_15_10_install ubuntu_16_04_install: ubuntu_install
 
 	@make --no-print-directory rcd_links
 
+# Fedora
 fedora_install:
 	@echo "\n::\033[34m Installing for Fedora 23\033[0m"
 	@echo "====================================================="
@@ -188,6 +189,22 @@ fedora_install:
 	@echo "\n::\033[34m Installing Razer systemd daemon file\033[0m"
 	@echo "====================================================="
 	@install -v -D install_files/systemd/razer_bcd.service $(DESTDIR)/lib/systemd/system/razer_bcd.service
+	@install -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
+	@install -v -D install_files/share/systemd_helpers.sh $(DESTDIR)/usr/share/razer_bcd/systemd_helpers.sh
+
+# Arch Linux
+arch_install: all dbus_install python_library_install
+	@echo "\n::\033[34m Installing for Arch Linux 23\033[0m"
+	@echo "====================================================="
+	@make --no-print-directory -C lib install DESTDIR=$(DESTDIR) LIBDIR=/usr/lib
+	@make --no-print-directory -C daemon install DESTDIR=$(DESTDIR) BINDIR=/usr/bin
+	@make --no-print-directory -C daemon_controller install DESTDIR=$(DESTDIR) BINDIR=/usr/bin
+
+	@make --no-print-directory udev_install DESTDIR=$(DESTDIR)/usr/
+
+	@echo "\n::\033[34m Installing Razer systemd daemon file\033[0m"
+	@echo "====================================================="
+	@install -v -D install_files/systemd/razer_bcd.service $(DESTDIR)/usr/lib/systemd/system/razer_bcd.service
 	@install -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
 	@install -v -D install_files/share/systemd_helpers.sh $(DESTDIR)/usr/share/razer_bcd/systemd_helpers.sh
 
