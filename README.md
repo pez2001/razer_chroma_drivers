@@ -1,4 +1,11 @@
-# Razer Drivers
+# ATTENTION!
+# Have moved developemnt to my fork [here](https://github.com/terrycain/razer_drivers)
+
+---
+
+---
+
+### Razer Drivers
 
 A collection of Linux drivers for the Razer devices, providing kernel drivers, DBus services and python bindings to interact with the DBus interface.
 
