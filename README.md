@@ -1,5 +1,5 @@
 # ATTENTION!
-# Have moved developemnt to my fork [here](https://github.com/terrycain/razer_drivers)
+# Have moved developemnt to my fork [here](https://github.com/terrycain/razer-drivers)
 
 ---
 
