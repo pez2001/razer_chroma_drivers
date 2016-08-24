@@ -1,11 +1,5 @@
 # razer-chroma-drivers website
 
-This branch contains the pages and data used for the website for this project.
+This branch use to contain the pages and data used for this project's website.
 
-Website features:
-
-* Features Overview
-* Supported Devices List
-* Package downloads for various distributions **(not ready yet)**
-* Instructions on building/compiling.
-* Links to other project pages.
+Efforts have since been shifted to terrycain's fork.
