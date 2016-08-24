@@ -13,6 +13,7 @@ Website: [Here](http://pez2001.github.io/razer_chroma_drivers/)
  * Razer Blackwidow Ultimate 2013 *(all lighting modes)*
  * Razer Blackwidow Chroma *(all lighting modes)*
  * Razer Blackwidow Chroma Tournament Edition *(all lighting modes)*
+ * Razer Blackwidow X Chroma *(all lighting modes)*
  * Razer Blade Stealth *(all lighting modes)*
  * Razer Blackwidow Ultimate 2016 (all bar custom lighting)
 

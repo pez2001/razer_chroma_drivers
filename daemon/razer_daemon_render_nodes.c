@@ -211,7 +211,8 @@ void daemon_connect_frame_buffer(struct razer_chroma_device *device,struct razer
 		razer_free_rgb_frame(render_node->output_frame);
 	render_node->output_frame = device_data->frame_buffer;
 	device_data->frame_buffer_linked_uid = render_node->id;
-	device_data->daemon->fps = render_node->effect->fps;
+	if (render_node->effect)
+		device_data->daemon->fps = render_node->effect->fps;
 }
 
 void daemon_disconnect_frame_buffer(struct razer_chroma_device *device)
