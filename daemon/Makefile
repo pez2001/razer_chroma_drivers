@@ -1,4 +1,4 @@
-LIBS=-lm -ldl
+LIBS=-lm -ldl -lgcc_s -lgcc
 CFLAGS=
 DESTDIR?=/
 BINDIR?=/usr/sbin
