@@ -1,10 +1,3 @@
-# ATTENTION!
-# Have moved developemnt to my fork [here](https://github.com/terrycain/razer-drivers)
-
----
-
----
-
 ### Razer Drivers
 
 A collection of Linux drivers for the Razer devices, providing kernel drivers, DBus services and python bindings to interact with the DBus interface.
@@ -319,26 +312,6 @@ FX setup scripts, bug fixes, feature requests, etc are also welcome.
  - Ubuntu fixes by Brad Murmz (pulled)
  - Default Keyboard profiles by Mathieu Okuyama (manual merge)
 
-## Donations (in Euros)
-
-Goal 1 (66/66)  [Completed]: 
-
- All donations go towards buying a Razer Firefly Led-Mousepad (no driver written yet/easy to incorporate)
-
- - Reward:  Sound driven example effect(Spectrum based).
-
-Stretch Goal 1 (166 of 166):
- 
-Buying a Razer Tartarus (also no driver written yet)
-
- - Reward:  Packaging for major distributions (debian based,redhat based,tar balls)
-
-Stretch Goal 2 (213 of 333):
- Buying a Razer Deathstalker Utimate (no driver too)
- - Reward:  A gtk based GUI (simple , something to build upon further).
-
- - All goals contain the linux driver for the respective device as reward also.
-
 
 
 Thank you for all donations i really appreciate it!
@@ -354,7 +327,6 @@ Thank you for all donations i really appreciate it!
 
   You can send your donations via PayPal to : feckelburger [at] gmx.net
   
-  You can also send PayPal donations to terry@terrys-home.co.uk if you want :wink:
 
 -----
 
