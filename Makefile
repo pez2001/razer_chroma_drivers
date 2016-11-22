@@ -152,7 +152,7 @@ ubuntu_install: all setup_dkms udev_install dbus_install
 	@make --no-print-directory -C lib install DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon install DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon_controller install DESTDIR=$(DESTDIR)
-	
+
 	@make --no-print-directory python_library_install PYTHONDIR=/usr/lib/python3/dist-packages
 
 # Ubuntu 14.04 uses upstart
@@ -162,7 +162,7 @@ ubuntu_14_04_install ubuntu_14_10_install: ubuntu_install
 	@install -m 644 -v -D install_files/init/razer_bcd.conf $(DESTDIR)/etc/init/razer_bcd.conf
 	@install -m 755 -v -D install_files/init.d/razer_bcd_ubuntu $(DESTDIR)/etc/init.d/razer_bcd
 	@install -m 755 -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
-	
+
 	@make --no-print-directory rcd_links
 
 # Ubuntu 15.04+ uses systemd
@@ -173,22 +173,38 @@ ubuntu_15_04_install ubuntu_15_10_install ubuntu_16_04_install: ubuntu_install
 	@install -v -D install_files/init.d/razer_bcd_ubuntu $(DESTDIR)/etc/init.d/razer_bcd
 	@install -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
 	@install -v -D install_files/share/systemd_helpers.sh $(DESTDIR)/usr/share/razer_bcd/systemd_helpers.sh
-	
+
 	@make --no-print-directory rcd_links
 
+# Fedora
 fedora_install:
 	@echo "\n::\033[34m Installing for Fedora 23\033[0m"
 	@echo "====================================================="
 	@make --no-print-directory -C lib install DESTDIR=$(DESTDIR) LIBDIR=/usr/lib64
 	@make --no-print-directory -C daemon install DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon_controller install DESTDIR=$(DESTDIR)
-	
+
 	@make --no-print-directory python_library_install PYTHONDIR=/usr/lib/python3/dist-packages
-	
+
 	@echo "\n::\033[34m Installing Razer systemd daemon file\033[0m"
 	@echo "====================================================="
 	@install -v -D install_files/systemd/razer_bcd.service $(DESTDIR)/lib/systemd/system/razer_bcd.service
-	@install -v -D install_files/init.d/razer_bcd_ubuntu $(DESTDIR)/etc/init.d/razer_bcd
+	@install -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
+	@install -v -D install_files/share/systemd_helpers.sh $(DESTDIR)/usr/share/razer_bcd/systemd_helpers.sh
+
+# Arch Linux
+arch_install: all dbus_install python_library_install
+	@echo "\n::\033[34m Installing for Arch Linux 23\033[0m"
+	@echo "====================================================="
+	@make --no-print-directory -C lib install DESTDIR=$(DESTDIR) LIBDIR=/usr/lib
+	@make --no-print-directory -C daemon install DESTDIR=$(DESTDIR) BINDIR=/usr/bin
+	@make --no-print-directory -C daemon_controller install DESTDIR=$(DESTDIR) BINDIR=/usr/bin
+
+	@make --no-print-directory udev_install DESTDIR=$(DESTDIR)/usr/
+
+	@echo "\n::\033[34m Installing Razer systemd daemon file\033[0m"
+	@echo "====================================================="
+	@install -v -D install_files/systemd/razer_bcd.service $(DESTDIR)/usr/lib/systemd/system/razer_bcd.service
 	@install -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
 	@install -v -D install_files/share/systemd_helpers.sh $(DESTDIR)/usr/share/razer_bcd/systemd_helpers.sh
 
@@ -198,19 +214,19 @@ install: all driver_install udev_install dbus_install python_library_install
 	@make --no-print-directory -C lib install DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon install DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon_controller install DESTDIR=$(DESTDIR)
-	
+
 	@echo "\n::\033[34m Installing Razer daemon init.d file\033[0m"
 	@echo "====================================================="
 	@install -v -D install_files/init.d/razer_bcd $(DESTDIR)/etc/init.d/razer_bcd
 	@install -v -D install_files/share/bash_keyboard_functions.sh $(DESTDIR)/usr/share/razer_bcd/bash_keyboard_functions.sh
-	
+
 	@make --no-print-directory rcd_links
 
 uninstall: driver_uninstall udev_uninstall dbus_uninstall python_library_uninstall remove_rcd_links
 	@make --no-print-directory -C lib uninstall DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon uninstall DESTDIR=$(DESTDIR)
 	@make --no-print-directory -C daemon_controller uninstall DESTDIR=$(DESTDIR)
-	
+
 	@rm -f $(DESTDIR)/lib/systemd/system/razer_bcd.service
 	@rm -f $(DESTDIR)/etc/init.d/razer_bcd
 	@rm -f $(DESTDIR)/etc/init/razer_bcd.conf

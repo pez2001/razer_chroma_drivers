@@ -1,6 +1,7 @@
 LIBS=-lm -ldl
 CFLAGS=
 DESTDIR?=/
+BINDIR?=/usr/sbin
 DEBUG_CFLAGS=
 #LDFLAGS=
 #DEBUG_LDFLAGS=
@@ -66,7 +67,7 @@ daemon_fx_clean:
 install:
 	@echo "\n::\033[34m Installing razer_bcd daemon\033[0m"
 	@echo "======================================"
-	@install -v -D razer_bcd $(DESTDIR)/usr/sbin/razer_bcd
+	@install -v -D razer_bcd $(DESTDIR)$(BINDIR)/razer_bcd
 	@echo "\n::\033[34m Installing razer daemon fx files\033[0m"
 	@echo "====================================================="
 	@install -v -D fx/pez2001_collection.so $(DESTDIR)/usr/share/razer_bcd/fx/pez2001_collection.so
@@ -80,7 +81,7 @@ endif
 uninstall:
 	@echo "\n::\033[34m Uninstalling razer_bcd daemon\033[0m"
 	@echo "====================================="
-	@rm -f $(DESTDIR)/usr/sbin/razer_bcd
+	@rm -f $(DESTDIR)$(BINDIR)/razer_bcd
 	@echo "\n::\033[34m Uninstalling razer daemon fx files\033[0m"
 	@echo "====================================================="
 	@rm -f $(DESTDIR)/usr/share/razer_bcd/fx/pez2001_collection.so
