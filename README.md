@@ -39,8 +39,8 @@ The following applications compliment and interact with this driver:
 
 
  Have a look at the scripts directory.
- In the driver sub directory you will find the scripts to
- start the builtin keyboard effects.
+ In the driver subdirectory you will find the scripts to
+ start the built-in keyboard effects.
 
 
  - Changing effect example
@@ -108,7 +108,7 @@ The following applications compliment and interact with this driver:
  
  And take a look at the daemon and tests sub directories in scripts.
  The daemon uses dbus as its IPC mechanism, so you are not bound to shell scripts
- (someone may even write a Gui to control the daemon , maybe like the node editor in blender)
+ (someone may even write a GUI to control the daemon, maybe like the Node Editor in Blender)
 
 
 ### Bash functions
@@ -159,26 +159,26 @@ How to create a standalone effect easily using the included library ?
 
 First of all we need an idea what the effect shall do.
 
-In this example i just setup the keyboard for a dota profile
+In this example I just setup the keyboard for a dota profile.
 
 First we need to setup the library:
 
         struct razer_chroma *chroma = razer_open();
 
 
-To create an custom keyboard led layout we need to tell the library to activate the custom mode:
+To create an custom keyboard LED layout, we need to tell the library to activate the custom mode:
 
         razer_set_custom_mode(chroma);
 
-If the keyboard was using the custom mode before the keys are still lit with the last color settings ,so let us clear it:
+If the keyboard was using the custom mode before the keys are still lit with the last color settings, so let us clear it:
 
         razer_clear_all(chroma->keys);
 
-To actually update the keyboard leds we need to razer_update (using the integrated keyboard led frame/keys struct):
+To actually update the keyboard LEDs we need to razer_update (using the integrated keyboard led frame/keys struct):
 
         razer_update_keys(chroma,chroma->keys);
 
-So now that we got a black keyboard we want to light some keys in different colors
+So now that we have a black keyboard, we want to light some keys in different colors:
 
         struct razer_rgb red = {.r=255,.g=0,.b=0}; //define a red color
         struct razer_rgb yellow = {.r=255,.g=255,.b=0}; //define a yellow color
@@ -223,7 +223,7 @@ So now that we got a black keyboard we want to light some keys in different colo
         razer_set_key_pos(chroma->keys,&pos,&green);
 
 
-Dont forget to update the keyboard with the new led color values:
+Don't forget to update the keyboard with the new LED color values:
 
         razer_update_keys(chroma,chroma->keys);
 
@@ -237,8 +237,8 @@ To compile just type:
 
         gcc  -std=c99  dota_keys.c  -lrazer_chroma  -lm  -o dota_keys
 
-After executing it you should now have a dota profile lighting up your keyboard.(dont forget to sudo)
-This is just a simple example using a ascii helper,if your profile needs to color function keys ,etc
+After executing it you should now have a dota profile lighting up your keyboard (don't forget to sudo).
+This is just a simple example using a ASCII helper. If your profile needs to color function keys, etc.
 you can set the key colors by manually setting the pos.
 
 
@@ -246,7 +246,7 @@ you can set the key colors by manually setting the pos.
 
 
 
-##Daemon effects tutorial
+## Daemon effects tutorial
 
 
 How to create an effect to be used in the daemon ?
@@ -260,12 +260,12 @@ Its not that much different than writing a self-hosted effect.
 
 
 
-##Contributions
+## Contributions
 
 
 Any effect or tool you might want to contribute is welcome.
 Please use your own source files to host your effects for merging.
-FX setup scripts, bug fixes, feature requests, etc are also welcome.
+FX setup scripts, bug fixes, feature requests, etc. are also welcome.
 
 
 ## TODO
@@ -274,21 +274,21 @@ FX setup scripts, bug fixes, feature requests, etc are also welcome.
 - support remaining effect handlers not called yet once
 - key locking / automatically skip key on following frame changes 
   / manual overwrite still possible / catch in convience functions
-- daemon,internal heatmap examples
+- daemon, internal heatmap examples
 - integrate `examples/dynamic` with daemon for passwordless GUI interface ?
 - daemon to remember current effect and colours in use ?
 - move remaining lib functions to razer_ namespace
 - move all daemon types to daemon_ namespace
-- split library into seperate source files (rgb,frames,hsl,drawing)
+- split library into seperate source files (RGB, frames, HSL, drawing)
 - free memory / fix leaks
 - submit kernel patch ?
 - customizable layout effect
-- fft analyzer effect
+- FFT analyzer effect
 - better multi device support
-- configuration for daemon (mouse input device,chroma devices to be used,etc)
+- configuration for daemon (mouse input device, chroma devices to be used, etc.)
 - add custom event sending via controller api
 - add list loaded libs command (automatic dupe check too)
-- add a minimal (custom mode only) daemon integrated libusb driver (windows/mac osx support)
+- add a minimal (custom mode only) daemon integrated libusb driver (Windows/macOS support)
 
 
 
@@ -314,7 +314,7 @@ FX setup scripts, bug fixes, feature requests, etc are also welcome.
 
 
 
-Thank you for all donations i really appreciate it!
+Thank you for all donations. I really appreciate it!
 
 
 
